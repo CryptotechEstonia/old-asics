@@ -1,41 +1,45 @@
 'use client'
 
-import { Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from "@chakra-ui/react"
+import type { asicminervalue } from "@prisma/client"
 
-export default function AsicsTable() {
+import { Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from "@chakra-ui/react"
+import AsicsRow from "./AsicsRow"
+
+export interface Props {
+	meta: { model: string, price: number }[]
+	models: asicminervalue[]
+}
+
+export function AsicsTableHeader() {
+	return <Tr>
+		<Th>Producer</Th>
+		<Th>Model</Th>
+		<Th>Profit</Th>
+		<Th textAlign={'center'}>Price</Th>
+		<Th textAlign={'center'}>ROI</Th>
+	</Tr>
+}
+
+export default function AsicsTable({ meta, models }: Props) {
 	return <TableContainer>
 		<Table variant='simple'>
-			<TableCaption>Imperial to metric conversion factors</TableCaption>
 			<Thead>
-				<Tr>
-					<Th>To convert</Th>
-					<Th>into</Th>
-					<Th isNumeric>multiply by</Th>
-				</Tr>
+				<AsicsTableHeader />
 			</Thead>
 			<Tbody>
-				<Tr>
-					<Td>inches</Td>
-					<Td>millimetres (mm)</Td>
-					<Td isNumeric>25.4</Td>
-				</Tr>
-				<Tr>
-					<Td>feet</Td>
-					<Td>centimetres (cm)</Td>
-					<Td isNumeric>30.48</Td>
-				</Tr>
-				<Tr>
-					<Td>yards</Td>
-					<Td>metres (m)</Td>
-					<Td isNumeric>0.91444</Td>
-				</Tr>
+				{models.map((model) => {
+					const search = meta.find(({ model: search }) => model.model === search)
+
+					const price = search?.price || 0
+
+					return <AsicsRow
+						key={model.id}
+						model={model}
+						price={price} />
+				})}
 			</Tbody>
 			<Tfoot>
-				<Tr>
-					<Th>To convert</Th>
-					<Th>into</Th>
-					<Th isNumeric>multiply by</Th>
-				</Tr>
+				<AsicsTableHeader />
 			</Tfoot>
 		</Table>
 	</TableContainer>
