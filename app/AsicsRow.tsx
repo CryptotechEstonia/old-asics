@@ -15,7 +15,7 @@ export default function AsicsRow({ price, model: { producer, model, profit } }: 
 	return <Tr>
 		<Td>{producer}</Td>
 		<Td>{model}</Td>
-		<Td isNumeric>{(profit / eur_to_usd / 100).toFixed(2)} €</Td>
+		<Td isNumeric color={getColor(profit / 100)}>{(profit / 100).toFixed(2)} €</Td>
 		<Td textAlign={'right'}>{price.toFixed(2)} €</Td>
 		<Td textAlign={'right'}>{roi.toFixed(0)} days</Td>
 	</Tr>
