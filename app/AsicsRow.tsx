@@ -3,8 +3,10 @@
 import type { asicminervalue } from "@prisma/client"
 
 import { Tr, Td } from "@chakra-ui/react"
+import { getColor } from "./colors"
 
 export interface Props {
+	electricity: number
 	price: number
 	model: asicminervalue
 }

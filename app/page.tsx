@@ -18,6 +18,8 @@ export default async function Page() {
 		{ model: "Antminer S19j Pro (96Th)", price: 5248.75 },
 	]
 
+	const electricity = 0.125
+
 	const rawIds = await prisma.asicminervalue.groupBy({
 		by: ['model'],
 		where: { model: { in: asics.map(({ model }) => model) } },
@@ -39,6 +41,6 @@ export default async function Page() {
 	const models = rawModels.filter(notEmpty).sort((a, b) => b.profit - a.profit)
 
 	return <AsicsLaout>
-		<AsicsTable meta={asics} models={models} />
+		<AsicsTable electricity={electricity} meta={asics} models={models} />
 	</AsicsLaout>
 }

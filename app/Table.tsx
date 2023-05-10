@@ -6,6 +6,7 @@ import { Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } 
 import AsicsRow from "./AsicsRow"
 
 export interface Props {
+	electricity: number
 	meta: { model: string, price: number }[]
 	models: asicminervalue[]
 }
@@ -20,7 +21,7 @@ export function AsicsTableHeader() {
 	</Tr>
 }
 
-export default function AsicsTable({ meta, models }: Props) {
+export default function AsicsTable({ electricity, meta, models }: Props) {
 	return <TableContainer>
 		<Table variant='simple'>
 			<Thead>
@@ -34,6 +35,7 @@ export default function AsicsTable({ meta, models }: Props) {
 
 					return <AsicsRow
 						key={model.id}
+						electricity={electricity}
 						model={model}
 						price={price} />
 				})}
