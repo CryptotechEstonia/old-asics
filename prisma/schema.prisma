@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model asicminervalue {
+  id        Int    @id @default(autoincrement())
+  timestamp String
+  name      String
+  model     String
+  producer  String
+  full      String
+  release   String
+  hashrate  Int
+  power     Int
+  noise     Int
+  algo      String
+  profit    Int
+
+  @@unique([timestamp, full], map: "unique_index")
+}
+
+model livecoinwatch {
+  id        Int    @id @default(autoincrement())
+  timestamp String
+  coin      String
+  price     Float
+
+  @@unique([timestamp, coin], map: "unique_index")
+}
