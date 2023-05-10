@@ -9,9 +9,9 @@ export interface Props {
 	model: asicminervalue
 }
 
-export default function AsicsRow({ price, model: { producer, model, profit } }: Props) {
-	const eur_to_usd = 1.09
-	const roi = price / (profit / eur_to_usd / 100)
+export default function AsicsRow({ electricity, price, model: { producer, model, profit } }: Props) {
+	const roi = price / (profit / 100)
+
 	return <Tr>
 		<Td>{producer}</Td>
 		<Td>{model}</Td>
