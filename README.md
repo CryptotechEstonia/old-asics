@@ -35,6 +35,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 ## Create Database user
-CREATE USER 'asicminervalue-fetcher'@'%' IDENTIFIED BY 'asicminervalue-fetcher';
-GRANT ALL PRIVILEGES ON 'fetches'.'asicminervalue' TO 'asicminervalue-fetcher'@'%';
-
+CREATE USER 'asicminervalue-fetcher'@'%' IDENTIFIED with mysql_native_password BY 'asicminervalue-fetcher';
+GRANT ALL PRIVILEGES ON fetches.asicminervalue TO 'asicminervalue-fetcher'@'%';
+FLUSH PRIVILEGES;

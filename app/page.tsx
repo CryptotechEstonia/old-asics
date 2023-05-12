@@ -1,7 +1,10 @@
+'use client'
+
 import AsicsLaout from "../components/AsicsLayout"
 import AsicsTable from "../components/Table"
 import Logo from "../components/Logo"
 import ShopLink from "../components/ShopLink"
+import useSWR from 'swr'
 
 export interface ASIC {
 	id: number
@@ -22,12 +25,12 @@ export interface ASIC {
 }
 
 export default async function Page() {
-	const asics: ASIC[] = await fetch(`${process.env.APP_BASE_URL}/api/asics`, { next: { revalidate: 10 } })
-		.then(response => response.json())
+	const fetcher = (url: string) => fetch(url).then(response => response.json())
+	const { data } = useSWR('/api/asics')
 
 	return <AsicsLaout>
 		<Logo />
 		<ShopLink />
-		<AsicsTable asics={asics} />
+		<AsicsTable asics={data} />
 	</AsicsLaout>
 }
