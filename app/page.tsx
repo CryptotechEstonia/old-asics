@@ -5,6 +5,7 @@ import AsicsTable from "../components/Table"
 import Logo from "../components/Logo"
 import ShopLink from "../components/ShopLink"
 import useSWR from 'swr'
+import { useEffect, useState } from "react"
 
 export interface ASIC {
 	id: number
@@ -24,9 +25,14 @@ export interface ASIC {
 	electricity: number
 }
 
-export default async function Page() {
-	const fetcher = (url: string) => fetch(url).then(response => response.json())
-	const { data } = useSWR('/api/asics', fetcher)
+export default function Page() {
+	const [data, setData] = useState([])
+
+	useEffect(() => {
+		fetch('/api/asics')
+			.then(response => response.json())
+			.then(result => setData(result))
+	}, [])
 
 	return <AsicsLaout>
 		<Logo />
