@@ -1,6 +1,6 @@
 'use client'
 
-import type { ASIC } from "./page"
+import type { ASIC } from "../app/page"
 
 import { Tr, Td } from "@chakra-ui/react"
 import { getColor } from "./colors"

@@ -1,6 +1,6 @@
 'use client'
 
-import type { ASIC } from "./page"
+import type { ASIC } from "../app/page"
 
 import { Table, TableContainer, Tbody, Tfoot, Th, Thead, Tr } from "@chakra-ui/react"
 import AsicsRow from "./AsicsRow"

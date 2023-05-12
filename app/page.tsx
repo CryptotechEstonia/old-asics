@@ -1,7 +1,7 @@
-import AsicsLaout from "./AsicsLayout"
-import AsicsTable from "./Table"
-import Logo from "./Logo"
-import ShopLink from "./ShopLink"
+import AsicsLaout from "../components/AsicsLayout"
+import AsicsTable from "../components/Table"
+import Logo from "../components/Logo"
+import ShopLink from "../components/ShopLink"
 
 export interface ASIC {
 	id: number
