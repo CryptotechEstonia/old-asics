@@ -29,6 +29,12 @@ export default function Page() {
 	const [data, setData] = useState([])
 
 	useEffect(() => {
+		fetch('/api/asics')
+			.then(response => response.json())
+			.then(result => setData(result))
+	}, [])
+
+	useEffect(() => {
 		const interval = window.setInterval(() => {
 			fetch('/api/asics')
 				.then(response => response.json())
