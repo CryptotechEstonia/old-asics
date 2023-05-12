@@ -26,7 +26,7 @@ export interface ASIC {
 
 export default async function Page() {
 	const fetcher = (url: string) => fetch(url).then(response => response.json())
-	const { data } = useSWR('/api/asics')
+	const { data } = useSWR('/api/asics', fetcher)
 
 	return <AsicsLaout>
 		<Logo />
