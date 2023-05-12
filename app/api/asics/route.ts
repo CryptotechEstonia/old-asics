@@ -23,6 +23,8 @@ function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
 	return value !== null && value !== undefined;
 }
 
+const electricity = 0.125
+
 export async function GET() {
 	const ids = await prisma.asicminervalue.groupBy({
 		by: ['model'],
@@ -36,7 +38,7 @@ export async function GET() {
 	const asics = await Promise.all(ids.map(id =>
 		prisma.asicminervalue.findUnique({ where: { id } })
 	)).then(models => models.filter(notEmpty))
-		.then(models => models.map(model => Object.assign(model, { price: getPrice(model.model) })))
+		.then(models => models.map(model => Object.assign(model, { price: getPrice(model.model), electricity })))
 
 	return NextResponse.json(asics)
 }

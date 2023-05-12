@@ -1,14 +1,12 @@
 'use client'
 
-import type { asicminervalue } from "@prisma/client"
+import type { ASIC } from "./page"
 
-import { Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from "@chakra-ui/react"
+import { Table, TableContainer, Tbody, Tfoot, Th, Thead, Tr } from "@chakra-ui/react"
 import AsicsRow from "./AsicsRow"
 
 export interface Props {
-	electricity: number
-	meta: { model: string, price: number }[]
-	models: asicminervalue[]
+	asics: ASIC[]
 }
 
 export function AsicsTableHeader() {
@@ -21,24 +19,20 @@ export function AsicsTableHeader() {
 	</Tr>
 }
 
-export default function AsicsTable({ electricity, meta, models }: Props) {
+const byPrice = (a: ASIC, b: ASIC) => b.profit - a.profit
+
+export default function AsicsTable({ asics }: Props) {
 	return <TableContainer>
 		<Table variant='simple'>
 			<Thead>
 				<AsicsTableHeader />
 			</Thead>
 			<Tbody>
-				{models.map((model) => {
-					const search = meta.find(({ model: search }) => model.model === search)
-
-					const price = search?.price || 0
-
-					return <AsicsRow
-						key={model.id}
-						electricity={electricity}
-						model={model}
-						price={price} />
-				})}
+				{asics.sort(byPrice).map((asic) =>
+					<AsicsRow
+					key={asic.id}
+					data={asic} />
+				)}
 			</Tbody>
 			<Tfoot>
 				<AsicsTableHeader />

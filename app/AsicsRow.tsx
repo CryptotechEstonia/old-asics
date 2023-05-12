@@ -1,17 +1,15 @@
 'use client'
 
-import type { asicminervalue } from "@prisma/client"
+import type { ASIC } from "./page"
 
 import { Tr, Td } from "@chakra-ui/react"
 import { getColor } from "./colors"
 
 export interface Props {
-	electricity: number
-	price: number
-	model: asicminervalue
+	data: ASIC
 }
 
-export default function AsicsRow({ electricity, price, model: { producer, model, profit } }: Props) {
+export default function AsicsRow({ data: { profit, producer, model, price } }: Props) {
 	const roi = price / (profit / 100)
 
 	return <Tr>
