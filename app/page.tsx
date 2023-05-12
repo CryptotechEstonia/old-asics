@@ -29,9 +29,13 @@ export default function Page() {
 	const [data, setData] = useState([])
 
 	useEffect(() => {
-		fetch('/api/asics')
-			.then(response => response.json())
-			.then(result => setData(result))
+		const interval = window.setInterval(() => {
+			fetch('/api/asics')
+				.then(response => response.json())
+				.then(result => setData(result))
+		}, 10 * 60 * 1000)
+
+		return () => window.clearInterval(interval)
 	}, [])
 
 	return <AsicsLaout>
