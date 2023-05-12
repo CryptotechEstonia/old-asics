@@ -4,7 +4,6 @@ import AsicsLaout from "../components/AsicsLayout"
 import AsicsTable from "../components/Table"
 import Logo from "../components/Logo"
 import ShopLink from "../components/ShopLink"
-import useSWR from 'swr'
 import { useEffect, useState } from "react"
 
 export interface ASIC {
