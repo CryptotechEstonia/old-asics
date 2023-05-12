@@ -19,7 +19,7 @@ export function AsicsTableHeader() {
 	</Tr>
 }
 
-const byPrice = (a: ASIC, b: ASIC) => b.profit - a.profit
+const byProfit = (a: ASIC, b: ASIC) => b.profit - a.profit
 
 export default function AsicsTable({ asics }: Props) {
 	return <TableContainer>
@@ -28,7 +28,7 @@ export default function AsicsTable({ asics }: Props) {
 				<AsicsTableHeader />
 			</Thead>
 			<Tbody>
-				{asics.sort(byPrice).map((asic) =>
+				{asics.sort(byProfit).map((asic) =>
 					<AsicsRow
 					key={asic.id}
 					data={asic} />

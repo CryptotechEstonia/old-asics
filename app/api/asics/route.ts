@@ -39,6 +39,10 @@ export async function GET() {
 		prisma.asicminervalue.findUnique({ where: { id } })
 	)).then(models => models.filter(notEmpty))
 		.then(models => models.map(model => Object.assign(model, { price: getPrice(model.model), electricity })))
+		.then(models => models.map(model => Object.assign(model, {
+			income: model.profit / 100,
+			profit: model.profit / 100 - model.power / 1000 * 24 * electricity
+		})))
 
 	return NextResponse.json(asics)
 }

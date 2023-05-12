@@ -15,6 +15,7 @@ export interface ASIC {
 	power: number
 	noise: number
 	algo: string
+	income: number
 	profit: number
 	price: number
 	electricity: number
