@@ -14,8 +14,6 @@ export default function AsicsRow({ data: { profit: income, producer, model, pric
 	const profit = income / 100 - consumption
 	const roi = profit > 0 ? Math.floor(price / profit) + ' days' : 'never'
 
-	console.log({power, electricity})
-
 	return <Tr>
 		<Td>{producer}</Td>
 		<Td>{model}</Td>
