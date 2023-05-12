@@ -1,5 +1,7 @@
 import AsicsLaout from "./AsicsLayout"
 import AsicsTable from "./Table"
+import Logo from "./Logo"
+import ShopLink from "./ShopLink"
 
 export interface ASIC {
 	id: number
@@ -23,6 +25,8 @@ export default async function Page() {
 		.then(response => response.json())
 
 	return <AsicsLaout>
+		<Logo />
+		<ShopLink />
 		<AsicsTable asics={asics} />
 	</AsicsLaout>
 }
