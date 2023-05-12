@@ -7,9 +7,9 @@ export interface Props {
 }
 
 export default function AsicsLaout({ children }: Props) {
-	return <Container>
+	return <Container maxW='container.lg'>
 		<Center height={'100vh'}>
-			<Box>
+			<Box width={'100%'}>
 				{children}
 			</Box>
 		</Center>
