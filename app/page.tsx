@@ -26,18 +26,25 @@ export interface ASIC {
 
 export default function Page() {
 	const [data, setData] = useState([])
+	const [updated, setUpdated] = useState<Date>()
 
 	useEffect(() => {
+		setUpdated(new Date())
+	}, [data])
+
+	const update = () => {
 		fetch('/api/asics')
 			.then(response => response.json())
 			.then(result => setData(result))
+	}
+
+	useEffect(() => {
+		update()
 	}, [])
 
 	useEffect(() => {
 		const interval = window.setInterval(() => {
-			fetch('/api/asics')
-				.then(response => response.json())
-				.then(result => setData(result))
+			update()
 		}, 10 * 60 * 1000)
 
 		return () => window.clearInterval(interval)
@@ -47,5 +54,9 @@ export default function Page() {
 		<Logo />
 		<ShopLink />
 		<AsicsTable asics={data} />
+		<div style={{
+			color: 'gray',
+			textAlign: 'center'
+		}}>Last updated: {updated === undefined ? 'updating...' : updated.toISOString().replace('T', ' ').split('.')[0]}</div>
 	</AsicsLaout>
 }
