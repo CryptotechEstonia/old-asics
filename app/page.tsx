@@ -57,6 +57,6 @@ export default function Page() {
 		<div style={{
 			color: 'gray',
 			textAlign: 'center'
-		}}>Last updated: {updated === undefined ? 'updating...' : updated.toISOString().replace('T', ' ').split('.')[0]}</div>
+		}}>Last updated: {updated === undefined ? 'updating...' : updated.toISOString().replace('T', ' ').split('.')[0] + ' UTC'}</div>
 	</AsicsLaout>
 }
