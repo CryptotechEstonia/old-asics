@@ -3,7 +3,7 @@ import { NextResponse } from "next/server"
 
 const settings = [
 	{ model: "Antminer L7 (9.5Gh)", price: 5923 },
-	{ model: "Antminer S19 XP Hyd (255Th)", price: 7250 },
+	{ model: "Antminer S19 XP Hyd (255Th)", price: 6600 },
 	{ model: "Antminer KA3 (166Th)", price: 9754 },
 	{ model: "Antminer S19 XP (140Th)", price: 4199 },
 	{ model: "Antminer S19k Pro (136Th)", price: 3876 },
