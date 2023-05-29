@@ -2,17 +2,17 @@ import { prisma } from "@/app/globa"
 import { NextResponse } from "next/server"
 
 const settings = [
-	{ model: "Antminer L7 (9.5Gh)", price: 9250 },
+	{ model: "Antminer L7 (9.5Gh)", price: 5923 },
 	{ model: "Antminer S19 XP Hyd (255Th)", price: 7250 },
-	{ model: "Antminer KA3 (166Th)", price: 11125 },
-	{ model: "Antminer S19 XP (140Th)", price: 5248.75 },
-	{ model: "Antminer S19k Pro (136Th)", price: 3930 },
-	{ model: "Antminer E9 Pro (3.68Gh)", price: 4061.25 },
-	{ model: "Antminer S19j Pro+ (122Th)", price: 2873.75 },
-	{ model: "Antminer K7 (63.5Th)", price: 8436.25 },
-	{ model: "Antminer S19j Pro (104Th)", price: 2320 },
-	{ model: "Antminer S19 Pro (110Th)", price: 3373.75 },
-	{ model: "Antminer S19j Pro (96Th)", price: 5248.75 },
+	{ model: "Antminer KA3 (166Th)", price: 9754 },
+	{ model: "Antminer S19 XP (140Th)", price: 4199 },
+	{ model: "Antminer S19k Pro (136Th)", price: 3876 },
+	{ model: "Antminer E9 Pro (3.68Gh)", price: 3974 },
+	{ model: "Antminer S19j Pro+ (122Th)", price: 3567 },
+	{ model: "Antminer K7 (63.5Th)", price: 8640 },
+	{ model: "Antminer S19j Pro (104Th)", price: 2477 },
+	{ model: "Antminer S19 Pro (110Th)", price: 3490 },
+	{ model: "Antminer S19j Pro (96Th)", price: 2434 },
 ]
 
 function getPrice(model: string): number {
