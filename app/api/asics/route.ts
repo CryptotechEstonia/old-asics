@@ -23,7 +23,7 @@ function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
 	return value !== null && value !== undefined;
 }
 
-const electricity = 0.125
+const electricity = 0.05
 
 export async function GET() {
 	const ids = await prisma.asicminervalue.groupBy({
