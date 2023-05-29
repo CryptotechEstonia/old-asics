@@ -43,6 +43,12 @@ export async function GET() {
 			income: model.profit / 100,
 			profit: model.profit / 100 - model.power / 1000 * 24 * electricity
 		})))
+		.then(models => models.map(model => {
+			if (model.name === 'Antminer L7 (9.5Gh)')
+				model.name = 'Antminer L7'
+
+			return model
+		}))
 
 	return NextResponse.json(asics)
 }
